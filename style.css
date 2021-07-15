@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+}
+
+#name {
+    color: white;
+    font-family: monospace;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: calc(50% - 3em);
+}
