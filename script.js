@@ -5,8 +5,10 @@ const Engine = Matter.Engine,
         Body = Matter.Body
         Composite = Matter.Composite;
 
+// create runner
 const runner = Runner.create();
 
+// All of the squares that will appear on the canvas
 const actors = [ 
     rectangleFactory(50, 10),
     rectangleFactory(80, 20),
@@ -39,28 +41,28 @@ function demo() {
     // run the renderer
     Render.run(render);
 
-    // create runner
-    // var runner = Runner.create();
-
     // run the engine
     Runner.run(runner, engine);
     console.log('STARGIN');
 }
 
+// Toggle visibility for the squares, round robin style
 function visibility() {
-    // boxA.render.visible = !boxA.render.visible;
-    // console.log("Visibility Toggled")
     actors[counter % actors.length].render.visible = !actors[counter % actors.length].render.visible;
     counter++;
 }
 
+// Scale x coordinates within the canvas based on viewport width
 function percentX(percent) {
     return Math.round(percent/100 * window.innerWidth);
-  }
+}
+
+// Scale y coordinates within the canvas based on viewport height
 function percentY(percent) {
     return Math.round(percent/100 * window.innerHeight);
 }
 
+// Generates a square with the desired properties centered at coordinates x,y assuming a canvas of 100 x 100
 function rectangleFactory(x, y) {
     const shape = Bodies.rectangle(percentX(x), percentY(y), 80, 80, { 
         torque: .5, 
@@ -75,6 +77,7 @@ function rectangleFactory(x, y) {
     return shape;
 }
 
+// Returns a random integer between 0 and max - 1, inclusive
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
